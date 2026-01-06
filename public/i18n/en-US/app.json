@@ -1,0 +1,397 @@
+{
+  "nav": {
+    "brand": "Game Art Platform",
+    "artBible": "Art Bible",
+    "artSpec": "Art Spec",
+    "incubation": "Incubation"
+  },
+  "artBible": {
+    "title": "Art Bible",
+    "description": "Select an art style template to view corresponding design specifications and reference materials.",
+    "selectStyle": "Select Art Style",
+    "styles": {
+      "stylizedFantasy": {
+        "id": "stylizedFantasy",
+        "name": "Stylized Fantasy",
+        "subtitle": "For RPG, MOBA games",
+        "project": "Project: Fantasy World Online v1.0",
+        "tabs": {
+          "overview": "Style Overview",
+          "color": "Color System",
+          "character": "Character Design",
+          "scene": "Scene Style",
+          "ui": "UI Visual"
+        },
+        "content": {
+          "overview": {
+            "title": "Style Overview",
+            "keywords": "Stylized, Semi-realistic, Fantasy",
+            "tone": "Epic, Mysterious, Vibrant",
+            "reference": "Genshin Impact, League of Legends",
+            "audience": "18-35 years old gamers"
+          },
+          "color": {
+            "title": "Color System",
+            "keywords": "High saturation, Strong contrast, Magic tones",
+            "tone": "Mystic purple, Magic blue, Gold accents",
+            "reference": "Deep Blue #1E3A8A, Gold #F59E0B",
+            "audience": "Fantasy game lovers"
+          },
+          "character": {
+            "title": "Character Design",
+            "keywords": "7-8 heads tall, Large eyes, Exaggerated proportions",
+            "tone": "Heroic, High recognition",
+            "reference": "Fantasy armor, Cultural fusion",
+            "audience": "Clear silhouette at distance"
+          },
+          "scene": {
+            "title": "Scene Style",
+            "keywords": "Gothic + Asian style, Dramatic landscapes",
+            "tone": "Epic, Mysterious, Grand",
+            "reference": "Volumetric fog, God rays",
+            "audience": "Open world, Dungeon scenes"
+          },
+          "ui": {
+            "title": "UI Visual",
+            "keywords": "Clean minimal, Ornate decorative frames",
+            "tone": "Tech meets fantasy",
+            "reference": "Filled icons, 2px stroke",
+            "audience": "Clear, readable, immersive"
+          }
+        }
+      },
+      "realistic": {
+        "id": "realistic",
+        "name": "Realistic",
+        "subtitle": "For FPS, Racing, Sports games",
+        "project": "Project: Battlefield Frontline v2.0",
+        "tabs": {
+          "overview": "Style Overview",
+          "color": "Color System",
+          "character": "Character Design",
+          "scene": "Scene Style",
+          "ui": "UI Visual"
+        },
+        "content": {
+          "overview": {
+            "title": "Style Overview",
+            "keywords": "Realistic, PBR materials, Real lighting",
+            "tone": "Hardcore, Immersive, Tense",
+            "reference": "Call of Duty, Battlefield",
+            "audience": "18-40 years hardcore gamers"
+          },
+          "color": {
+            "title": "Color System",
+            "keywords": "Low saturation, Grayscale based, Natural tones",
+            "tone": "Military green, Desert tan, Concrete gray",
+            "reference": "Olive #556B2F, Sand #C2B280",
+            "audience": "Modern warfare, Military themes"
+          },
+          "character": {
+            "title": "Character Design",
+            "keywords": "Real proportions, Muscle structure, Facial details",
+            "tone": "Muscular, Powerful",
+            "reference": "Modern military gear, Tactical equipment",
+            "audience": "Soldiers, Agent characters"
+          },
+          "scene": {
+            "title": "Scene Style",
+            "keywords": "Real architecture, Destruction traces, Environmental details",
+            "tone": "War ruins, Urban battlefield",
+            "reference": "PBR materials, Real-time GI",
+            "audience": "Multiplayer battle maps"
+          },
+          "ui": {
+            "title": "UI Visual",
+            "keywords": "Clean HUD, Info priority, Military style",
+            "tone": "Functional, Readable",
+            "reference": "Line icons, Monochrome",
+            "audience": "Minimal distraction"
+          }
+        }
+      },
+      "pixelArt": {
+        "id": "pixelArt",
+        "name": "Pixel Art",
+        "subtitle": "For Indie, Retro games",
+        "project": "Project: Pixel Adventure v1.0",
+        "tabs": {
+          "overview": "Style Overview",
+          "color": "Color System",
+          "character": "Character Design",
+          "scene": "Scene Style",
+          "ui": "UI Visual"
+        },
+        "content": {
+          "overview": {
+            "title": "Style Overview",
+            "keywords": "16-bit, Retro, Handcrafted feel",
+            "tone": "Nostalgic, Cozy, Fun",
+            "reference": "Stardew Valley, Terraria",
+            "audience": "All ages indie game lovers"
+          },
+          "color": {
+            "title": "Color System",
+            "keywords": "Limited palette, 16-32 colors",
+            "tone": "Bright, Clear contrast",
+            "reference": "NES palette, PICO-8",
+            "audience": "Retro game players"
+          },
+          "character": {
+            "title": "Character Design",
+            "keywords": "16x16 / 32x32 pixels, 2-3 frame animation",
+            "tone": "Cute, Simple, Recognizable",
+            "reference": "Big head small body, Exaggerated expressions",
+            "audience": "Platformer, RPG characters"
+          },
+          "scene": {
+            "title": "Scene Style",
+            "keywords": "Tile maps, Layered sprites, Parallax scrolling",
+            "tone": "Pixel perfect, Grid aligned",
+            "reference": "Tileset, Sprite Sheet",
+            "audience": "2D side-scroller, Top-down"
+          },
+          "ui": {
+            "title": "UI Visual",
+            "keywords": "Pixel fonts, 8-bit icons, Retro frames",
+            "tone": "Simple, Clear",
+            "reference": "Dialog boxes, Health bars, Menus",
+            "audience": "Classic UI layouts"
+          }
+        }
+      },
+      "anime": {
+        "id": "anime",
+        "name": "Anime",
+        "subtitle": "For Gacha, Visual Novel, Otome games",
+        "project": "Project: Stardust Story v1.0",
+        "tabs": {
+          "overview": "Style Overview",
+          "color": "Color System",
+          "character": "Character Design",
+          "scene": "Scene Style",
+          "ui": "UI Visual"
+        },
+        "content": {
+          "overview": {
+            "title": "Style Overview",
+            "keywords": "Japanese anime, Cel-shading, Live2D",
+            "tone": "Refined, Gorgeous, Healing",
+            "reference": "Arknights, Genshin Impact, Honkai",
+            "audience": "15-30 years anime fans"
+          },
+          "color": {
+            "title": "Color System",
+            "keywords": "Soft gradients, Sakura pink, Sky blue",
+            "tone": "Fresh, Dreamy, Feminine",
+            "reference": "Pink #FFB7C5, Lavender #E6E6FA",
+            "audience": "Gacha, Otome games"
+          },
+          "character": {
+            "title": "Character Design",
+            "keywords": "Large eyes, Detailed hairstyles, Gorgeous outfits",
+            "tone": "Beautiful, Detailed illustrations",
+            "reference": "Live2D, Spine animation",
+            "audience": "Gacha, Collection characters"
+          },
+          "scene": {
+            "title": "Scene Style",
+            "keywords": "Background CG, Scene illustrations, Light atmosphere",
+            "tone": "Beautiful, Detailed, Narrative",
+            "reference": "Illustrated backgrounds, Mood rendering",
+            "audience": "Story, Dialog scenes"
+          },
+          "ui": {
+            "title": "UI Visual",
+            "keywords": "Rounded cards, Gradient buttons, Decorative elements",
+            "tone": "Refined, Dynamic, Rich feedback",
+            "reference": "Bubbles, Glow effects, Micro-animations",
+            "audience": "Gacha UI, Inventory systems"
+          }
+        }
+      }
+    },
+    "labels": {
+      "keywords": "Keywords",
+      "tone": "Visual Tone",
+      "reference": "Reference",
+      "audience": "Use Cases",
+      "referenceImages": "Reference Images",
+      "clickToView": "Click to view full size"
+    }
+  },
+  "artSpec": {
+    "title": "Art Specification",
+    "subtitle": "Asset Production Standards",
+    "description": "Technical specifications for art asset production across different game categories and target platforms.",
+    "filterGroups": {
+      "category": {
+        "title": "Game Category",
+        "options": [
+          { "id": "rpg", "label": "RPG" },
+          { "id": "fps", "label": "FPS" },
+          { "id": "moba", "label": "MOBA" },
+          { "id": "slg", "label": "SLG" },
+          { "id": "casual", "label": "Casual" }
+        ]
+      },
+      "platform": {
+        "title": "Target Platform",
+        "options": [
+          { "id": "pc", "label": "PC" },
+          { "id": "mobile", "label": "Mobile" },
+          { "id": "console", "label": "Console" }
+        ]
+      },
+      "asset": {
+        "title": "Asset Type",
+        "options": [
+          { "id": "texture", "label": "Texture" },
+          { "id": "model", "label": "Model" },
+          { "id": "animation", "label": "Animation" },
+          { "id": "vfx", "label": "VFX" }
+        ]
+      }
+    },
+    "specs": {
+      "texture": {
+        "title": "Texture Specification",
+        "sections": [
+          {
+            "subtitle": "Size Standards",
+            "items": [
+              { "label": "PC Hero Characters", "value": "2048 x 2048" },
+              { "label": "PC NPCs", "value": "1024 x 1024" },
+              { "label": "Mobile Characters", "value": "1024 x 1024" },
+              { "label": "Mobile Props", "value": "512 x 512" }
+            ]
+          },
+          {
+            "subtitle": "Format Requirements",
+            "items": [
+              { "label": "Albedo/Diffuse", "value": "PNG / TGA" },
+              { "label": "Normal Map", "value": "TGA (DirectX)" },
+              { "label": "Metallic/Roughness", "value": "PNG (Packed)" },
+              { "label": "Emission", "value": "PNG (RGB)" }
+            ]
+          }
+        ]
+      },
+      "model": {
+        "title": "Model Specification",
+        "sections": [
+          {
+            "subtitle": "Polygon Limits",
+            "items": [
+              { "label": "PC Hero (High)", "value": "30,000 - 50,000 tris" },
+              { "label": "PC Hero (Mid)", "value": "15,000 - 25,000 tris" },
+              { "label": "Mobile Hero", "value": "8,000 - 15,000 tris" },
+              { "label": "Mobile NPC", "value": "3,000 - 6,000 tris" }
+            ]
+          },
+          {
+            "subtitle": "Skeleton Standards",
+            "items": [
+              { "label": "Humanoid Bones", "value": "60 - 80 bones" },
+              { "label": "Facial Bones", "value": "30 - 50 bones" },
+              { "label": "Mobile Optimized", "value": "40 - 60 bones" },
+              { "label": "Creature Rigs", "value": "40 - 100 bones" }
+            ]
+          }
+        ]
+      },
+      "animation": {
+        "title": "Animation Specification",
+        "sections": [
+          {
+            "subtitle": "Frame Rate Standards",
+            "items": [
+              { "label": "PC Gameplay", "value": "30 FPS" },
+              { "label": "PC Cutscene", "value": "60 FPS" },
+              { "label": "Mobile Gameplay", "value": "30 FPS" },
+              { "label": "UI Animations", "value": "60 FPS" }
+            ]
+          },
+          {
+            "subtitle": "Duration Guidelines",
+            "items": [
+              { "label": "Idle Loop", "value": "2 - 4 seconds" },
+              { "label": "Attack Combo", "value": "0.5 - 1.5 seconds" },
+              { "label": "Ultimate Skill", "value": "2 - 5 seconds" },
+              { "label": "Death Animation", "value": "1 - 2 seconds" }
+            ]
+          }
+        ]
+      },
+      "vfx": {
+        "title": "VFX Specification",
+        "sections": [
+          {
+            "subtitle": "Particle Limits",
+            "items": [
+              { "label": "PC Max Particles", "value": "5,000 per effect" },
+              { "label": "Mobile Max Particles", "value": "1,000 per effect" },
+              { "label": "Screen Coverage", "value": "< 30% max" },
+              { "label": "Overdraw Budget", "value": "< 4x" }
+            ]
+          },
+          {
+            "subtitle": "Texture Standards",
+            "items": [
+              { "label": "Flipbook Size", "value": "512 x 512 (4x4)" },
+              { "label": "Noise Textures", "value": "256 x 256" },
+              { "label": "Gradient Maps", "value": "256 x 16" },
+              { "label": "Format", "value": "PNG with Alpha" }
+            ]
+          }
+        ]
+      }
+    },
+    "emptyState": "Select asset types from the filter panel to view specifications."
+  },
+  "incubation": {
+    "title": "Project Incubation",
+    "subtitle": "Submit Your Creative Ideas",
+    "description": "Submit project proposals for review. Upload your design documents and track the approval status of your submissions.",
+    "form": {
+      "title": "New Proposal",
+      "projectName": "Project Name",
+      "projectNamePlaceholder": "Enter your project name",
+      "email": "Email Address",
+      "emailPlaceholder": "your.email@company.com",
+      "descriptionLabel": "Project Description",
+      "descriptionPlaceholder": "Describe your project idea, target audience, and key features...",
+      "document": "Design Document",
+      "dragDropText": "Drag and drop files here, or click to browse",
+      "supportedFormats": "Supports PDF, Word, PowerPoint (Max 50MB)",
+      "submitButton": "Submit Proposal"
+    },
+    "proposals": {
+      "title": "My Proposals",
+      "submitted": "Submitted",
+      "status": {
+        "reviewing": "Reviewing",
+        "approved": "Approved",
+        "rejected": "Rejected"
+      }
+    },
+    "validation": {
+      "projectNameRequired": "Please enter a project name.",
+      "emailRequired": "Please enter a valid email address.",
+      "descriptionRequired": "Please enter a project description.",
+      "invalidFileType": "Please upload PDF, Word, or PowerPoint files only.",
+      "submitSuccess": "Proposal submitted successfully! (Demo)"
+    },
+    "mockData": {
+      "name1": "Star Expedition",
+      "desc1": "A sci-fi space exploration RPG with real-time combat.",
+      "name2": "Fantasy Land",
+      "desc2": "Open world fantasy adventure game with unique magic system.",
+      "name3": "Speed Racing",
+      "desc3": "Arcade-style racing game with customizable vehicles."
+    }
+  },
+  "common": {
+    "language": "Language"
+  }
+}

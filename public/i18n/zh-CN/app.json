@@ -1,0 +1,397 @@
+{
+  "nav": {
+    "brand": "游戏美术平台",
+    "artBible": "美术圣经",
+    "artSpec": "美术规范",
+    "incubation": "项目孵化"
+  },
+  "artBible": {
+    "title": "美术圣经",
+    "description": "选择美术风格模板，查看对应的设计规范和参考资料。",
+    "selectStyle": "选择美术风格",
+    "styles": {
+      "stylizedFantasy": {
+        "id": "stylizedFantasy",
+        "name": "风格化奇幻",
+        "subtitle": "适用于RPG、MOBA类游戏",
+        "project": "项目：幻想世界在线 v1.0",
+        "tabs": {
+          "overview": "风格概述",
+          "color": "色彩体系",
+          "character": "角色设计",
+          "scene": "场景风格",
+          "ui": "UI视觉"
+        },
+        "content": {
+          "overview": {
+            "title": "风格概述",
+            "keywords": "风格化、半写实、奇幻",
+            "tone": "史诗、神秘、鲜明",
+            "reference": "原神、英雄联盟",
+            "audience": "18-35岁游戏玩家"
+          },
+          "color": {
+            "title": "色彩体系",
+            "keywords": "高饱和、对比强烈、魔法色调",
+            "tone": "神秘紫、魔法蓝、金色点缀",
+            "reference": "深蓝 #1E3A8A、金色 #F59E0B",
+            "audience": "奇幻游戏爱好者"
+          },
+          "character": {
+            "title": "角色设计",
+            "keywords": "7-8头身、大眼睛、夸张比例",
+            "tone": "英雄感、辨识度高",
+            "reference": "奇幻铠甲、文化融合",
+            "audience": "远距离剪影清晰"
+          },
+          "scene": {
+            "title": "场景风格",
+            "keywords": "哥特式+亚洲风格、壮丽地貌",
+            "tone": "史诗、神秘、宏大",
+            "reference": "体积雾、神光效果",
+            "audience": "开放世界、副本场景"
+          },
+          "ui": {
+            "title": "UI视觉",
+            "keywords": "简洁极简、华丽装饰边框",
+            "tone": "科技感与奇幻结合",
+            "reference": "填充图标、2px描边",
+            "audience": "清晰易读、沉浸感"
+          }
+        }
+      },
+      "realistic": {
+        "id": "realistic",
+        "name": "写实风格",
+        "subtitle": "适用于FPS、赛车、体育类游戏",
+        "project": "项目：战地前线 v2.0",
+        "tabs": {
+          "overview": "风格概述",
+          "color": "色彩体系",
+          "character": "角色设计",
+          "scene": "场景风格",
+          "ui": "UI视觉"
+        },
+        "content": {
+          "overview": {
+            "title": "风格概述",
+            "keywords": "写实、PBR材质、真实光照",
+            "tone": "硬核、沉浸、紧张",
+            "reference": "使命召唤、战地",
+            "audience": "18-40岁硬核玩家"
+          },
+          "color": {
+            "title": "色彩体系",
+            "keywords": "低饱和、灰阶为主、真实色调",
+            "tone": "军事绿、沙漠黄、混凝土灰",
+            "reference": "橄榄绿 #556B2F、沙色 #C2B280",
+            "audience": "现代战争、军事题材"
+          },
+          "character": {
+            "title": "角色设计",
+            "keywords": "真实比例、肌肉结构、面部细节",
+            "tone": "肌肉感、力量感",
+            "reference": "现代军装、战术装备",
+            "audience": "士兵、特工角色"
+          },
+          "scene": {
+            "title": "场景风格",
+            "keywords": "真实建筑、破坏痕迹、环境细节",
+            "tone": "战争废墟、城市战场",
+            "reference": "PBR材质、实时GI",
+            "audience": "多人对战地图"
+          },
+          "ui": {
+            "title": "UI视觉",
+            "keywords": "HUD简洁、信息优先、军事风格",
+            "tone": "功能性、可读性",
+            "reference": "线性图标、单色调",
+            "audience": "最小化干扰"
+          }
+        }
+      },
+      "pixelArt": {
+        "id": "pixelArt",
+        "name": "像素艺术",
+        "subtitle": "适用于独立游戏、复古游戏",
+        "project": "项目：像素冒险记 v1.0",
+        "tabs": {
+          "overview": "风格概述",
+          "color": "色彩体系",
+          "character": "角色设计",
+          "scene": "场景风格",
+          "ui": "UI视觉"
+        },
+        "content": {
+          "overview": {
+            "title": "风格概述",
+            "keywords": "16-bit、复古、手工感",
+            "tone": "怀旧、温馨、趣味",
+            "reference": "星露谷物语、泰拉瑞亚",
+            "audience": "全年龄独立游戏爱好者"
+          },
+          "color": {
+            "title": "色彩体系",
+            "keywords": "限制调色板、16-32色",
+            "tone": "明快、对比清晰",
+            "reference": "NES调色板、PICO-8",
+            "audience": "复古游戏玩家"
+          },
+          "character": {
+            "title": "角色设计",
+            "keywords": "16x16 / 32x32像素、2-3帧动画",
+            "tone": "可爱、简洁、易识别",
+            "reference": "大头小身、夸张表情",
+            "audience": "平台跳跃、RPG角色"
+          },
+          "scene": {
+            "title": "场景风格",
+            "keywords": "瓦片地图、图层分层、视差滚动",
+            "tone": "像素完美、网格对齐",
+            "reference": "Tileset、Sprite Sheet",
+            "audience": "2D横版、俯视角"
+          },
+          "ui": {
+            "title": "UI视觉",
+            "keywords": "像素字体、8-bit图标、复古边框",
+            "tone": "简洁、清晰",
+            "reference": "对话框、血条、菜单",
+            "audience": "经典UI布局"
+          }
+        }
+      },
+      "anime": {
+        "id": "anime",
+        "name": "二次元",
+        "subtitle": "适用于二游、AVG、女性向游戏",
+        "project": "项目：星辰物语 v1.0",
+        "tabs": {
+          "overview": "风格概述",
+          "color": "色彩体系",
+          "character": "角色设计",
+          "scene": "场景风格",
+          "ui": "UI视觉"
+        },
+        "content": {
+          "overview": {
+            "title": "风格概述",
+            "keywords": "日式动画、赛璐璐、Live2D",
+            "tone": "精致、华丽、治愈",
+            "reference": "明日方舟、原神、崩坏",
+            "audience": "15-30岁二次元用户"
+          },
+          "color": {
+            "title": "色彩体系",
+            "keywords": "柔和渐变、樱花粉、天空蓝",
+            "tone": "清新、梦幻、少女感",
+            "reference": "粉色 #FFB7C5、淡紫 #E6E6FA",
+            "audience": "二游、乙女游戏"
+          },
+          "character": {
+            "title": "角色设计",
+            "keywords": "大眼睛、精致发型、华丽服装",
+            "tone": "美型、立绘精致",
+            "reference": "Live2D、Spine动画",
+            "audience": "抽卡、养成角色"
+          },
+          "scene": {
+            "title": "场景风格",
+            "keywords": "背景CG、场景立绘、光影氛围",
+            "tone": "唯美、细腻、故事感",
+            "reference": "插画风背景、气氛渲染",
+            "audience": "剧情、对话场景"
+          },
+          "ui": {
+            "title": "UI视觉",
+            "keywords": "圆角卡片、渐变按钮、装饰元素",
+            "tone": "精致、动感、反馈丰富",
+            "reference": "气泡、光效、微动效",
+            "audience": "抽卡界面、背包系统"
+          }
+        }
+      }
+    },
+    "labels": {
+      "keywords": "关键词",
+      "tone": "视觉基调",
+      "reference": "参考",
+      "audience": "适用场景",
+      "referenceImages": "参考图片",
+      "clickToView": "点击查看大图"
+    }
+  },
+  "artSpec": {
+    "title": "美术规范",
+    "subtitle": "资产制作标准",
+    "description": "针对不同游戏品类和目标平台的美术资产制作技术规范。",
+    "filterGroups": {
+      "category": {
+        "title": "游戏品类",
+        "options": [
+          { "id": "rpg", "label": "角色扮演" },
+          { "id": "fps", "label": "第一人称射击" },
+          { "id": "moba", "label": "多人在线战术竞技" },
+          { "id": "slg", "label": "策略游戏" },
+          { "id": "casual", "label": "休闲游戏" }
+        ]
+      },
+      "platform": {
+        "title": "目标平台",
+        "options": [
+          { "id": "pc", "label": "PC端" },
+          { "id": "mobile", "label": "移动端" },
+          { "id": "console", "label": "主机" }
+        ]
+      },
+      "asset": {
+        "title": "资产类型",
+        "options": [
+          { "id": "texture", "label": "贴图" },
+          { "id": "model", "label": "模型" },
+          { "id": "animation", "label": "动画" },
+          { "id": "vfx", "label": "特效" }
+        ]
+      }
+    },
+    "specs": {
+      "texture": {
+        "title": "贴图规范",
+        "sections": [
+          {
+            "subtitle": "尺寸标准",
+            "items": [
+              { "label": "PC端英雄角色", "value": "2048 x 2048" },
+              { "label": "PC端NPC", "value": "1024 x 1024" },
+              { "label": "移动端角色", "value": "1024 x 1024" },
+              { "label": "移动端道具", "value": "512 x 512" }
+            ]
+          },
+          {
+            "subtitle": "格式要求",
+            "items": [
+              { "label": "漫反射贴图", "value": "PNG / TGA" },
+              { "label": "法线贴图", "value": "TGA (DirectX)" },
+              { "label": "金属度/粗糙度", "value": "PNG (合并)" },
+              { "label": "自发光贴图", "value": "PNG (RGB)" }
+            ]
+          }
+        ]
+      },
+      "model": {
+        "title": "模型规范",
+        "sections": [
+          {
+            "subtitle": "面数限制",
+            "items": [
+              { "label": "PC端英雄（高配）", "value": "30,000 - 50,000 三角面" },
+              { "label": "PC端英雄（中配）", "value": "15,000 - 25,000 三角面" },
+              { "label": "移动端英雄", "value": "8,000 - 15,000 三角面" },
+              { "label": "移动端NPC", "value": "3,000 - 6,000 三角面" }
+            ]
+          },
+          {
+            "subtitle": "骨骼标准",
+            "items": [
+              { "label": "人形骨骼", "value": "60 - 80 根骨骼" },
+              { "label": "面部骨骼", "value": "30 - 50 根骨骼" },
+              { "label": "移动端优化", "value": "40 - 60 根骨骼" },
+              { "label": "生物绑定", "value": "40 - 100 根骨骼" }
+            ]
+          }
+        ]
+      },
+      "animation": {
+        "title": "动画规范",
+        "sections": [
+          {
+            "subtitle": "帧率标准",
+            "items": [
+              { "label": "PC端游戏动画", "value": "30 FPS" },
+              { "label": "PC端过场动画", "value": "60 FPS" },
+              { "label": "移动端游戏动画", "value": "30 FPS" },
+              { "label": "UI动画", "value": "60 FPS" }
+            ]
+          },
+          {
+            "subtitle": "时长规范",
+            "items": [
+              { "label": "待机循环", "value": "2 - 4 秒" },
+              { "label": "攻击连招", "value": "0.5 - 1.5 秒" },
+              { "label": "终极技能", "value": "2 - 5 秒" },
+              { "label": "死亡动画", "value": "1 - 2 秒" }
+            ]
+          }
+        ]
+      },
+      "vfx": {
+        "title": "特效规范",
+        "sections": [
+          {
+            "subtitle": "粒子限制",
+            "items": [
+              { "label": "PC端最大粒子数", "value": "5,000 个/效果" },
+              { "label": "移动端最大粒子数", "value": "1,000 个/效果" },
+              { "label": "屏幕覆盖率", "value": "< 30% 最大" },
+              { "label": "过度绘制预算", "value": "< 4倍" }
+            ]
+          },
+          {
+            "subtitle": "贴图标准",
+            "items": [
+              { "label": "序列帧尺寸", "value": "512 x 512 (4x4)" },
+              { "label": "噪声贴图", "value": "256 x 256" },
+              { "label": "渐变贴图", "value": "256 x 16" },
+              { "label": "格式", "value": "PNG（带Alpha）" }
+            ]
+          }
+        ]
+      }
+    },
+    "emptyState": "请从筛选面板选择资产类型以查看规范。"
+  },
+  "incubation": {
+    "title": "项目孵化",
+    "subtitle": "提交您的创意想法",
+    "description": "提交项目提案进行评审。上传您的设计文档并跟踪提交状态。",
+    "form": {
+      "title": "新建提案",
+      "projectName": "项目名称",
+      "projectNamePlaceholder": "输入您的项目名称",
+      "email": "电子邮箱",
+      "emailPlaceholder": "your.email@company.com",
+      "descriptionLabel": "项目描述",
+      "descriptionPlaceholder": "描述您的项目想法、目标受众和核心特性...",
+      "document": "设计文档",
+      "dragDropText": "拖拽文件到此处，或点击浏览",
+      "supportedFormats": "支持 PDF、Word、PowerPoint（最大 50MB）",
+      "submitButton": "提交提案"
+    },
+    "proposals": {
+      "title": "我的提案",
+      "submitted": "提交时间",
+      "status": {
+        "reviewing": "审核中",
+        "approved": "已通过",
+        "rejected": "已拒绝"
+      }
+    },
+    "validation": {
+      "projectNameRequired": "请输入项目名称。",
+      "emailRequired": "请输入有效的邮箱地址。",
+      "descriptionRequired": "请输入项目描述。",
+      "invalidFileType": "请上传 PDF、Word 或 PowerPoint 文件。",
+      "submitSuccess": "提案提交成功！（演示）"
+    },
+    "mockData": {
+      "name1": "星际远征",
+      "desc1": "一款科幻太空探索RPG，具有实时战斗系统。",
+      "name2": "幻想大陆",
+      "desc2": "开放世界奇幻冒险游戏，具有独特的魔法系统。",
+      "name3": "极速竞赛",
+      "desc3": "街机风格赛车游戏，支持自定义车辆。"
+    }
+  },
+  "common": {
+    "language": "语言"
+  }
+}
