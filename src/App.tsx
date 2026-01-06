@@ -7,11 +7,12 @@ import Incubation from './pages/Incubation'
 /**
  * Main Application Component
  * Configures routing for three main pages with i18n support
+ * Uses import.meta.env.BASE_URL for GitHub Pages compatibility
  */
 function App() {
   return (
     <I18nProvider>
-      <BrowserRouter>
+      <BrowserRouter basename={import.meta.env.BASE_URL}>
         <Routes>
           <Route path="/" element={<ArtBible />} />
           <Route path="/spec" element={<ArtSpec />} />

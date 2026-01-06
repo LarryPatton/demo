@@ -229,7 +229,9 @@ export function I18nProvider({ children }: { children: ReactNode }) {
 
       try {
         setLoading(true)
-        const response = await fetch(`/i18n/${locale}/app.json`)
+        // Use import.meta.env.BASE_URL for GitHub Pages compatibility
+        const basePath = import.meta.env.BASE_URL || '/'
+        const response = await fetch(`${basePath}i18n/${locale}/app.json`)
         
         if (!response.ok) {
           throw new Error(`Failed to load i18n: ${response.status}`)
