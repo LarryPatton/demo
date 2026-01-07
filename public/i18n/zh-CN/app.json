@@ -263,6 +263,28 @@
     "specs": {
       "texture": {
         "title": "贴图规范",
+        "images": [
+          {
+            "id": "pbr_channels",
+            "title": "PBR通道示例",
+            "desc": "Albedo / Normal / Metallic / Roughness / AO 各通道展示"
+          },
+          {
+            "id": "texture_compression",
+            "title": "贴图压缩对比",
+            "desc": "左：原始贴图 | 右：BC7压缩后"
+          },
+          {
+            "id": "mipmap_levels",
+            "title": "Mipmap层级",
+            "desc": "不同距离下的Mipmap层级切换效果"
+          },
+          {
+            "id": "color_space",
+            "title": "色彩空间对比",
+            "desc": "sRGB与Linear色彩空间的差异"
+          }
+        ],
         "sections": [
           {
             "subtitle": "尺寸标准",
@@ -298,6 +320,38 @@
       },
       "model": {
         "title": "模型规范",
+        "images": [
+          {
+            "id": "topology_good_bad",
+            "title": "布线拓扑对比",
+            "desc": "左：正确的四边面布线 | 右：错误的N-gon和三角面"
+          },
+          {
+            "id": "uv_layout",
+            "title": "UV展开示例",
+            "desc": "UV边距≥2像素，无重叠，空间利用率高"
+          },
+          {
+            "id": "lod_comparison",
+            "title": "LOD层级对比",
+            "desc": "LOD0 / LOD1 / LOD2 不同距离下的模型精度"
+          },
+          {
+            "id": "pivot_point",
+            "title": "枢轴点位置",
+            "desc": "枢轴点应位于模型底部中心"
+          },
+          {
+            "id": "edge_flow",
+            "title": "关节布线走向",
+            "desc": "肘部/膝部等变形区域的正确边流走向"
+          },
+          {
+            "id": "normal_direction",
+            "title": "法线方向",
+            "desc": "左：正确朝外的法线 | 右：翻转的法线"
+          }
+        ],
         "sections": [
           {
             "subtitle": "面数限制",
@@ -342,6 +396,28 @@
       },
       "animation": {
         "title": "动画规范",
+        "images": [
+          {
+            "id": "skeleton_hierarchy",
+            "title": "骨骼层级结构",
+            "desc": "标准人形骨骼层级示意图"
+          },
+          {
+            "id": "animation_curve",
+            "title": "动画曲线",
+            "desc": "左：平滑插值曲线 | 右：线性插值曲线"
+          },
+          {
+            "id": "root_motion",
+            "title": "根骨骼运动",
+            "desc": "Root Motion提取与应用示意"
+          },
+          {
+            "id": "loop_animation",
+            "title": "循环动画",
+            "desc": "首尾帧对齐实现无缝循环"
+          }
+        ],
         "sections": [
           {
             "subtitle": "帧率标准",
@@ -376,6 +452,23 @@
       },
       "vfx": {
         "title": "特效规范",
+        "images": [
+          {
+            "id": "flipbook_layout",
+            "title": "序列帧布局",
+            "desc": "4x4网格排列的序列帧贴图示例"
+          },
+          {
+            "id": "overdraw_visual",
+            "title": "Overdraw可视化",
+            "desc": "特效过度绘制热力图，红色表示高消耗区域"
+          },
+          {
+            "id": "particle_budget",
+            "title": "粒子预算对比",
+            "desc": "低/中/高粒子数量的视觉效果与性能对比"
+          }
+        ],
         "sections": [
           {
             "subtitle": "粒子限制",
@@ -410,6 +503,18 @@
       },
       "material": {
         "title": "材质规范",
+        "images": [
+          {
+            "id": "material_layers",
+            "title": "材质分层示例",
+            "desc": "基础层、细节层、效果层的材质组织方式"
+          },
+          {
+            "id": "shader_complexity",
+            "title": "Shader复杂度对比",
+            "desc": "简单/中等/复杂Shader的性能消耗对比"
+          }
+        ],
         "sections": [
           {
             "subtitle": "材质球管理",
@@ -442,6 +547,28 @@
       },
       "ui": {
         "title": "UI资源规范",
+        "images": [
+          {
+            "id": "9slice_example",
+            "title": "九宫格切图",
+            "desc": "九宫格切割边界与拉伸区域示意"
+          },
+          {
+            "id": "atlas_packing",
+            "title": "图集打包",
+            "desc": "高效的图集打包布局，边距2px"
+          },
+          {
+            "id": "safe_area",
+            "title": "安全区域",
+            "desc": "不同设备的安全区域标注"
+          },
+          {
+            "id": "icon_grid",
+            "title": "图标对齐网格",
+            "desc": "图标设计的标准对齐网格"
+          }
+        ],
         "sections": [
           {
             "subtitle": "设计基准",

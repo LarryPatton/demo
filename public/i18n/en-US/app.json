@@ -263,6 +263,28 @@
     "specs": {
       "texture": {
         "title": "Texture Specification",
+        "images": [
+          {
+            "id": "pbr_channels",
+            "title": "PBR Channels Example",
+            "desc": "Albedo / Normal / Metallic / Roughness / AO channel breakdown"
+          },
+          {
+            "id": "texture_compression",
+            "title": "Texture Compression Comparison",
+            "desc": "Left: Original texture | Right: BC7 compressed"
+          },
+          {
+            "id": "mipmap_levels",
+            "title": "Mipmap Levels",
+            "desc": "Mipmap level switching at different distances"
+          },
+          {
+            "id": "color_space",
+            "title": "Color Space Comparison",
+            "desc": "Difference between sRGB and Linear color spaces"
+          }
+        ],
         "sections": [
           {
             "subtitle": "Size Standards",
@@ -298,6 +320,38 @@
       },
       "model": {
         "title": "Model Specification",
+        "images": [
+          {
+            "id": "topology_good_bad",
+            "title": "Topology Comparison",
+            "desc": "Left: Correct quad-based topology | Right: Incorrect N-gons and tris"
+          },
+          {
+            "id": "uv_layout",
+            "title": "UV Layout Example",
+            "desc": "UV padding ≥2px, no overlap, high space utilization"
+          },
+          {
+            "id": "lod_comparison",
+            "title": "LOD Level Comparison",
+            "desc": "LOD0 / LOD1 / LOD2 model precision at different distances"
+          },
+          {
+            "id": "pivot_point",
+            "title": "Pivot Point Position",
+            "desc": "Pivot should be at the bottom center of the model"
+          },
+          {
+            "id": "edge_flow",
+            "title": "Joint Edge Flow",
+            "desc": "Correct edge flow for deformation areas (elbows/knees)"
+          },
+          {
+            "id": "normal_direction",
+            "title": "Normal Direction",
+            "desc": "Left: Correct outward normals | Right: Flipped normals"
+          }
+        ],
         "sections": [
           {
             "subtitle": "Polygon Limits",
@@ -342,6 +396,28 @@
       },
       "animation": {
         "title": "Animation Specification",
+        "images": [
+          {
+            "id": "skeleton_hierarchy",
+            "title": "Skeleton Hierarchy",
+            "desc": "Standard humanoid skeleton hierarchy diagram"
+          },
+          {
+            "id": "animation_curve",
+            "title": "Animation Curves",
+            "desc": "Left: Smooth interpolation | Right: Linear interpolation"
+          },
+          {
+            "id": "root_motion",
+            "title": "Root Motion",
+            "desc": "Root motion extraction and application"
+          },
+          {
+            "id": "loop_animation",
+            "title": "Loop Animation",
+            "desc": "First/Last frame alignment for seamless loops"
+          }
+        ],
         "sections": [
           {
             "subtitle": "Frame Rate Standards",
@@ -376,6 +452,23 @@
       },
       "vfx": {
         "title": "VFX Specification",
+        "images": [
+          {
+            "id": "flipbook_layout",
+            "title": "Flipbook Layout",
+            "desc": "4x4 grid flipbook texture example"
+          },
+          {
+            "id": "overdraw_visual",
+            "title": "Overdraw Visualization",
+            "desc": "Effect overdraw heatmap, red indicates high cost areas"
+          },
+          {
+            "id": "particle_budget",
+            "title": "Particle Budget Comparison",
+            "desc": "Low/Medium/High particle count visual and performance comparison"
+          }
+        ],
         "sections": [
           {
             "subtitle": "Particle Limits",
@@ -410,6 +503,18 @@
       },
       "material": {
         "title": "Material Specification",
+        "images": [
+          {
+            "id": "material_layers",
+            "title": "Material Layering",
+            "desc": "Base layer, detail layer, effect layer organization"
+          },
+          {
+            "id": "shader_complexity",
+            "title": "Shader Complexity Comparison",
+            "desc": "Simple/Medium/Complex shader performance cost comparison"
+          }
+        ],
         "sections": [
           {
             "subtitle": "Material Management",
@@ -442,6 +547,28 @@
       },
       "ui": {
         "title": "UI Asset Specification",
+        "images": [
+          {
+            "id": "9slice_example",
+            "title": "9-Slice Cutting",
+            "desc": "9-slice cutting boundaries and stretch areas"
+          },
+          {
+            "id": "atlas_packing",
+            "title": "Atlas Packing",
+            "desc": "Efficient atlas packing layout with 2px padding"
+          },
+          {
+            "id": "safe_area",
+            "title": "Safe Area",
+            "desc": "Safe area markings for different devices"
+          },
+          {
+            "id": "icon_grid",
+            "title": "Icon Alignment Grid",
+            "desc": "Standard alignment grid for icon design"
+          }
+        ],
         "sections": [
           {
             "subtitle": "Design Standards",

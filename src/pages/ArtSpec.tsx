@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import Navigation from '../components/Navigation'
+import ImagePreviewModal from '../components/ImagePreviewModal'
 import { useI18n } from '../hooks/useI18n'
 import { 
   FileText,
@@ -30,7 +31,9 @@ import {
   Layout,
   ClipboardList,
   FolderTree,
-  BookOpen
+  BookOpen,
+  Images,
+  ChevronUp
 } from 'lucide-react'
 
 /**
@@ -90,17 +93,20 @@ function Checkbox({ checked, onChange, label, iconId }: CheckboxProps) {
   )
 }
 
-// Spec Card component
-interface SpecCardProps {
+// Enhanced Spec Card component with images
+interface EnhancedSpecCardProps {
+  specId: string
   title: string
   iconId: string
   sections: {
     subtitle: string
     items: { label: string; value: string }[]
   }[]
+  images?: SpecImage[]
+  onImageClick: (specId: string, index: number) => void
 }
 
-function SpecCard({ title, iconId, sections }: SpecCardProps) {
+function EnhancedSpecCard({ specId, title, iconId, sections, images, onImageClick }: EnhancedSpecCardProps) {
   const Icon = iconMap[iconId] || FileText
   
   return (
@@ -138,6 +144,15 @@ function SpecCard({ title, iconId, sections }: SpecCardProps) {
           </div>
         ))}
       </div>
+      
+      {/* Reference Images Section */}
+      {images && images.length > 0 && (
+        <SpecImages 
+          specId={specId} 
+          images={images} 
+          onImageClick={onImageClick} 
+        />
+      )}
     </div>
   )
 }
@@ -232,6 +247,87 @@ function CopyButton({ text }: { text: string }) {
   )
 }
 
+// Spec Image interface
+interface SpecImage {
+  id: string
+  title: string
+  desc: string
+}
+
+// Generate placeholder image URL based on image id
+function getPlaceholderImageUrl(specId: string, imageId: string, size: 'thumb' | 'full' = 'thumb'): string {
+  const seed = `${specId}-${imageId}`
+  const dimensions = size === 'thumb' ? '300/200' : '800/600'
+  return `https://picsum.photos/seed/${seed}/${dimensions}`
+}
+
+// Spec Images component (collapsible reference images)
+interface SpecImagesProps {
+  specId: string
+  images: SpecImage[]
+  onImageClick: (specId: string, index: number) => void
+}
+
+function SpecImages({ specId, images, onImageClick }: SpecImagesProps) {
+  const [isExpanded, setIsExpanded] = useState(false)
+  
+  if (!images || images.length === 0) return null
+  
+  return (
+    <div className="mt-6 pt-4 border-t border-[var(--border-default)]">
+      {/* Toggle Header */}
+      <button
+        onClick={() => setIsExpanded(!isExpanded)}
+        className="w-full flex items-center justify-between py-2 px-3 bg-[var(--bg-overlay)] rounded hover:bg-[var(--bg-hover)] transition-colors"
+      >
+        <div className="flex items-center gap-2">
+          <Images className="w-4 h-4 text-[var(--text-secondary)]" />
+          <span className="text-sm font-medium text-[var(--text-primary)]">
+            参考图片
+          </span>
+          <span className="text-xs text-[var(--text-muted)] bg-[var(--bg-surface)] px-2 py-0.5 rounded">
+            {images.length}
+          </span>
+        </div>
+        {isExpanded ? (
+          <ChevronUp className="w-4 h-4 text-[var(--text-muted)]" />
+        ) : (
+          <ChevronDown className="w-4 h-4 text-[var(--text-muted)]" />
+        )}
+      </button>
+      
+      {/* Image Grid (Collapsible) */}
+      {isExpanded && (
+        <div className="mt-4 grid grid-cols-2 sm:grid-cols-3 gap-3">
+          {images.map((image, index) => (
+            <div 
+              key={image.id}
+              className="group cursor-pointer"
+              onClick={() => onImageClick(specId, index)}
+            >
+              <div className="relative aspect-[3/2] rounded overflow-hidden bg-[var(--bg-overlay)] border border-[var(--border-default)] group-hover:border-primary transition-colors">
+                <img
+                  src={getPlaceholderImageUrl(specId, image.id, 'thumb')}
+                  alt={image.title}
+                  loading="lazy"
+                  className="w-full h-full object-cover transition-transform group-hover:scale-105"
+                />
+                {/* Hover Overlay */}
+                <div className="absolute inset-0 bg-black/0 group-hover:bg-black/30 transition-colors flex items-center justify-center">
+                  <Image className="w-6 h-6 text-white opacity-0 group-hover:opacity-100 transition-opacity" />
+                </div>
+              </div>
+              <p className="mt-1.5 text-xs text-[var(--text-secondary)] truncate">
+                {image.title}
+              </p>
+            </div>
+          ))}
+        </div>
+      )}
+    </div>
+  )
+}
+
 // Checklist Item component
 function ChecklistItem({ item, required }: { item: string; required: boolean }) {
   const [checked, setChecked] = useState(false)
@@ -282,6 +378,47 @@ function ArtSpec() {
     asset: new Set(['texture', 'model']),
   })
 
+  // Image preview modal state
+  const [previewModal, setPreviewModal] = useState<{
+    isOpen: boolean
+    specId: string
+    imageIndex: number
+  }>({
+    isOpen: false,
+    specId: '',
+    imageIndex: 0
+  })
+
+  // Handle image click to open preview
+  const handleImageClick = (specId: string, index: number) => {
+    setPreviewModal({
+      isOpen: true,
+      specId,
+      imageIndex: index
+    })
+  }
+
+  // Close preview modal
+  const closePreviewModal = () => {
+    setPreviewModal(prev => ({ ...prev, isOpen: false }))
+  }
+
+  // Navigate to previous image
+  const goToPrevImage = () => {
+    setPreviewModal(prev => ({
+      ...prev,
+      imageIndex: Math.max(0, prev.imageIndex - 1)
+    }))
+  }
+
+  // Navigate to next image
+  const goToNextImage = (maxIndex: number) => {
+    setPreviewModal(prev => ({
+      ...prev,
+      imageIndex: Math.min(maxIndex, prev.imageIndex + 1)
+    }))
+  }
+
   // Toggle filter option
   const toggleFilter = (groupId: string, optionId: string) => {
     setFilters(prev => {
@@ -313,13 +450,22 @@ function ArtSpec() {
     { id: 'asset', ...artSpec.filterGroups.asset },
   ]
 
-  // All specifications from i18n (including new ones)
-  const allSpecs: Record<string, { title: string; sections: { subtitle: string; items: { label: string; value: string }[] }[] }> = artSpec.specs
+  // All specifications from i18n (including images)
+  const allSpecs: Record<string, { 
+    title: string
+    sections: { subtitle: string; items: { label: string; value: string }[] }[]
+    images?: SpecImage[]
+  }> = artSpec.specs
 
   // Filter specifications based on selected asset types
   const filteredSpecs = Object.entries(allSpecs)
     .filter(([id]) => filters.asset.has(id))
     .map(([id, spec]) => ({ id, ...spec }))
+
+  // Get current spec images for modal
+  const currentSpecImages = previewModal.specId ? (allSpecs[previewModal.specId]?.images || []) : []
+  const currentImage = currentSpecImages[previewModal.imageIndex]
+  const currentImageUrl = currentImage ? getPlaceholderImageUrl(previewModal.specId, currentImage.id, 'full') : ''
 
   // Tab configuration
   const tabs = [
@@ -408,11 +554,14 @@ function ArtSpec() {
                 {filteredSpecs.length > 0 ? (
                   <div className="grid grid-cols-1 xl:grid-cols-2 gap-6">
                     {filteredSpecs.map((spec) => (
-                      <SpecCard 
-                        key={spec.id} 
+                      <EnhancedSpecCard 
+                        key={spec.id}
+                        specId={spec.id}
                         title={spec.title}
                         iconId={spec.id}
                         sections={spec.sections}
+                        images={spec.images}
+                        onImageClick={handleImageClick}
                       />
                     ))}
                   </div>
@@ -641,6 +790,18 @@ function ArtSpec() {
           )}
         </div>
       </main>
+
+      {/* Image Preview Modal */}
+      <ImagePreviewModal
+        isOpen={previewModal.isOpen}
+        imageUrl={currentImageUrl}
+        imageAlt={currentImage?.title || ''}
+        onClose={closePreviewModal}
+        onPrev={goToPrevImage}
+        onNext={() => goToNextImage(currentSpecImages.length - 1)}
+        hasPrev={previewModal.imageIndex > 0}
+        hasNext={previewModal.imageIndex < currentSpecImages.length - 1}
+      />
     </div>
   )
 }
