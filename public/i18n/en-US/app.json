@@ -222,8 +222,13 @@
   },
   "artSpec": {
     "title": "Art Specification",
-    "subtitle": "Asset Production Standards",
-    "description": "Technical specifications for art asset production across different game categories and target platforms.",
+    "subtitle": "Asset Production Standards & Project Guidelines",
+    "description": "Technical specifications for art asset production, including directory structure, naming conventions, asset standards, and delivery checklists.",
+    "tabs": {
+      "asset": "Asset Specs",
+      "project": "Project Structure",
+      "checklist": "Delivery Checklist"
+    },
     "filterGroups": {
       "category": {
         "title": "Game Category",
@@ -249,7 +254,9 @@
           { "id": "texture", "label": "Texture" },
           { "id": "model", "label": "Model" },
           { "id": "animation", "label": "Animation" },
-          { "id": "vfx", "label": "VFX" }
+          { "id": "vfx", "label": "VFX" },
+          { "id": "material", "label": "Material" },
+          { "id": "ui", "label": "UI Assets" }
         ]
       }
     },
@@ -263,16 +270,28 @@
               { "label": "PC Hero Characters", "value": "2048 x 2048" },
               { "label": "PC NPCs", "value": "1024 x 1024" },
               { "label": "Mobile Characters", "value": "1024 x 1024" },
-              { "label": "Mobile Props", "value": "512 x 512" }
+              { "label": "Mobile Props", "value": "512 x 512" },
+              { "label": "Large Environment", "value": "2048 x 2048" },
+              { "label": "Small Environment", "value": "256 x 256 ~ 512 x 512" }
             ]
           },
           {
             "subtitle": "Format Requirements",
             "items": [
-              { "label": "Albedo/Diffuse", "value": "PNG / TGA" },
-              { "label": "Normal Map", "value": "TGA (DirectX)" },
-              { "label": "Metallic/Roughness", "value": "PNG (Packed)" },
-              { "label": "Emission", "value": "PNG (RGB)" }
+              { "label": "Albedo/Diffuse", "value": "PNG / TGA (sRGB)" },
+              { "label": "Normal Map", "value": "TGA (DirectX, Linear)" },
+              { "label": "Packed MRA", "value": "PNG (R:Metal G:Rough B:AO)" },
+              { "label": "Emissive", "value": "PNG (RGB, sRGB)" },
+              { "label": "Mask Texture", "value": "PNG (Single/Multi channel)" }
+            ]
+          },
+          {
+            "subtitle": "Technical Requirements",
+            "items": [
+              { "label": "Mipmap", "value": "Required (except UI textures)" },
+              { "label": "Resolution", "value": "Must be Power of Two (POT)" },
+              { "label": "Compression (PC)", "value": "BC7 / BC5 (Normal)" },
+              { "label": "Compression (Mobile)", "value": "ASTC 4x4 / ETC2" }
             ]
           }
         ]
@@ -286,16 +305,37 @@
               { "label": "PC Hero (High)", "value": "30,000 - 50,000 tris" },
               { "label": "PC Hero (Mid)", "value": "15,000 - 25,000 tris" },
               { "label": "Mobile Hero", "value": "8,000 - 15,000 tris" },
-              { "label": "Mobile NPC", "value": "3,000 - 6,000 tris" }
+              { "label": "Mobile NPC", "value": "3,000 - 6,000 tris" },
+              { "label": "Large Environment", "value": "5,000 - 20,000 tris" },
+              { "label": "Small Props", "value": "100 - 1,000 tris" }
             ]
           },
           {
             "subtitle": "Skeleton Standards",
             "items": [
-              { "label": "Humanoid Bones", "value": "60 - 80 bones" },
+              { "label": "Humanoid (PC)", "value": "60 - 80 bones" },
+              { "label": "Humanoid (Mobile)", "value": "40 - 60 bones" },
               { "label": "Facial Bones", "value": "30 - 50 bones" },
-              { "label": "Mobile Optimized", "value": "40 - 60 bones" },
-              { "label": "Creature Rigs", "value": "40 - 100 bones" }
+              { "label": "Creatures/Monsters", "value": "40 - 100 bones" },
+              { "label": "Bones Per Vertex", "value": "PC: 4 / Mobile: 2" }
+            ]
+          },
+          {
+            "subtitle": "UV & Materials",
+            "items": [
+              { "label": "UV1 (Main Texture)", "value": "No overlap, ≥2px padding" },
+              { "label": "UV2 (Lightmap)", "value": "No overlap, 0-1 space" },
+              { "label": "Materials (Character)", "value": "1-3 per character" },
+              { "label": "Materials (Environment)", "value": "1-2 per object" }
+            ]
+          },
+          {
+            "subtitle": "Export Settings",
+            "items": [
+              { "label": "File Format", "value": "FBX 2020" },
+              { "label": "Scale", "value": "1 unit = 1 centimeter" },
+              { "label": "Coordinate System", "value": "Y-up, -Z forward" },
+              { "label": "Pivot Point", "value": "Bottom center" }
             ]
           }
         ]
@@ -306,19 +346,30 @@
           {
             "subtitle": "Frame Rate Standards",
             "items": [
-              { "label": "PC Gameplay", "value": "30 FPS" },
-              { "label": "PC Cutscene", "value": "60 FPS" },
-              { "label": "Mobile Gameplay", "value": "30 FPS" },
-              { "label": "UI Animations", "value": "60 FPS" }
+              { "label": "Gameplay Animation", "value": "30 FPS" },
+              { "label": "Cutscene/CG", "value": "30 / 60 FPS" },
+              { "label": "UI Animation", "value": "60 FPS" },
+              { "label": "Facial Animation", "value": "30 FPS" }
             ]
           },
           {
             "subtitle": "Duration Guidelines",
             "items": [
               { "label": "Idle Loop", "value": "2 - 4 seconds" },
-              { "label": "Attack Combo", "value": "0.5 - 1.5 seconds" },
-              { "label": "Ultimate Skill", "value": "2 - 5 seconds" },
+              { "label": "Walk Cycle", "value": "0.8 - 1.2 seconds" },
+              { "label": "Run Cycle", "value": "0.6 - 0.8 seconds" },
+              { "label": "Attack Action", "value": "0.5 - 1.5 seconds" },
+              { "label": "Skill Cast", "value": "1 - 3 seconds" },
               { "label": "Death Animation", "value": "1 - 2 seconds" }
+            ]
+          },
+          {
+            "subtitle": "Skeletal Animation Rules",
+            "items": [
+              { "label": "Root Motion", "value": "Extract to Root Motion" },
+              { "label": "Loop Animation", "value": "First/Last frame must match" },
+              { "label": "Keyframe Density", "value": "1 keyframe per 2-5 frames" },
+              { "label": "Animation Curves", "value": "Use smooth interpolation" }
             ]
           }
         ]
@@ -331,20 +382,307 @@
             "items": [
               { "label": "PC Max Particles", "value": "5,000 per effect" },
               { "label": "Mobile Max Particles", "value": "1,000 per effect" },
-              { "label": "Screen Coverage", "value": "< 30% max" },
-              { "label": "Overdraw Budget", "value": "< 4x" }
+              { "label": "On-Screen Effects", "value": "PC: 50 / Mobile: 20" },
+              { "label": "Screen Coverage", "value": "< 30%" },
+              { "label": "Overdraw", "value": "< 4x" }
             ]
           },
           {
             "subtitle": "Texture Standards",
             "items": [
-              { "label": "Flipbook Size", "value": "512 x 512 (4x4)" },
-              { "label": "Noise Textures", "value": "256 x 256" },
-              { "label": "Gradient Maps", "value": "256 x 16" },
-              { "label": "Format", "value": "PNG with Alpha" }
+              { "label": "Flipbook Size", "value": "512 x 512 (4x4 = 16 frames)" },
+              { "label": "Flipbook Size (Large)", "value": "1024 x 1024 (8x8 = 64 frames)" },
+              { "label": "Noise/Distortion", "value": "256 x 256 (Tileable)" },
+              { "label": "Gradient Ramp", "value": "256 x 16" },
+              { "label": "Format", "value": "PNG (with Alpha)" }
+            ]
+          },
+          {
+            "subtitle": "Shader Specification",
+            "items": [
+              { "label": "ALU Count (Mobile)", "value": "< 50 ALU" },
+              { "label": "ALU Count (PC)", "value": "< 100 ALU" },
+              { "label": "Texture Samplers", "value": "< 4" },
+              { "label": "Blend Mode", "value": "Prefer Additive" }
             ]
           }
         ]
+      },
+      "material": {
+        "title": "Material Specification",
+        "sections": [
+          {
+            "subtitle": "Material Management",
+            "items": [
+              { "label": "Material Instancing", "value": "Use Material Instances for variants" },
+              { "label": "Materials (Character)", "value": "1-3 per character" },
+              { "label": "Materials (Props)", "value": "1 per object" },
+              { "label": "Shared Materials", "value": "Share across similar assets" }
+            ]
+          },
+          {
+            "subtitle": "Shader Complexity",
+            "items": [
+              { "label": "ALU Count (Mobile)", "value": "< 100 ALU" },
+              { "label": "ALU Count (PC)", "value": "< 200 ALU" },
+              { "label": "Texture Samplers (Mobile)", "value": "≤ 4" },
+              { "label": "Texture Samplers (PC)", "value": "≤ 8" }
+            ]
+          },
+          {
+            "subtitle": "Transparency Usage",
+            "items": [
+              { "label": "Alpha Blend", "value": "Avoid large coverage" },
+              { "label": "Alpha Test", "value": "Prefer for foliage, hair" },
+              { "label": "Render Queue", "value": "Set correct sorting order" },
+              { "label": "Double-Sided", "value": "Enable only when necessary" }
+            ]
+          }
+        ]
+      },
+      "ui": {
+        "title": "UI Asset Specification",
+        "sections": [
+          {
+            "subtitle": "Design Standards",
+            "items": [
+              { "label": "Design Resolution", "value": "1920 x 1080 (16:9)" },
+              { "label": "HD Support", "value": "2560 x 1440 / 4K" },
+              { "label": "Mobile Baseline", "value": "1334 x 750 (iPhone 8)" },
+              { "label": "Safe Area", "value": "≥ 5% from edges" }
+            ]
+          },
+          {
+            "subtitle": "Icon Standards",
+            "items": [
+              { "label": "Skill Icons", "value": "128 x 128 / 256 x 256" },
+              { "label": "Item Icons", "value": "64 x 64 / 128 x 128" },
+              { "label": "System Icons", "value": "32 x 32 / 64 x 64" },
+              { "label": "Icon Format", "value": "PNG-24 (with Alpha)" }
+            ]
+          },
+          {
+            "subtitle": "Atlas Standards",
+            "items": [
+              { "label": "Max Atlas Size", "value": "2048 x 2048" },
+              { "label": "Atlas Padding", "value": "≥ 2 pixels" },
+              { "label": "9-Slice", "value": "Document slice parameters" },
+              { "label": "Export Format", "value": "PNG-24 / WebP" }
+            ]
+          },
+          {
+            "subtitle": "Naming Convention",
+            "items": [
+              { "label": "Buttons", "value": "UI_Btn_[Function]_[State]" },
+              { "label": "Icons", "value": "UI_Icon_[Category]_[Name]" },
+              { "label": "Backgrounds", "value": "UI_Bg_[Module]_[Desc]" },
+              { "label": "General", "value": "UI_[Type]_[Module]_[Function]" }
+            ]
+          }
+        ]
+      }
+    },
+    "projectStructure": {
+      "title": "Project Directory Structure",
+      "description": "Standardized art asset directory organization to ensure team collaboration efficiency and asset management convenience.",
+      "engines": {
+        "unity": {
+          "name": "Unity Project Structure",
+          "tree": [
+            { "name": "Assets/", "type": "folder", "children": [
+              { "name": "_Project/", "type": "folder", "desc": "Project-specific assets", "children": [
+                { "name": "Art/", "type": "folder", "desc": "Art asset root", "children": [
+                  { "name": "Characters/", "type": "folder", "desc": "Character assets", "children": [
+                    { "name": "Player/", "type": "folder", "desc": "Player characters" },
+                    { "name": "NPC/", "type": "folder", "desc": "NPC characters" },
+                    { "name": "Monsters/", "type": "folder", "desc": "Monster/Enemy" }
+                  ]},
+                  { "name": "Environments/", "type": "folder", "desc": "Environment assets", "children": [
+                    { "name": "Props/", "type": "folder", "desc": "Prop objects" },
+                    { "name": "Buildings/", "type": "folder", "desc": "Architecture" },
+                    { "name": "Terrain/", "type": "folder", "desc": "Terrain assets" },
+                    { "name": "Vegetation/", "type": "folder", "desc": "Plants & Trees" }
+                  ]},
+                  { "name": "VFX/", "type": "folder", "desc": "Visual effects", "children": [
+                    { "name": "Particles/", "type": "folder", "desc": "Particle effects" },
+                    { "name": "Textures/", "type": "folder", "desc": "VFX textures" },
+                    { "name": "Shaders/", "type": "folder", "desc": "VFX shaders" }
+                  ]},
+                  { "name": "UI/", "type": "folder", "desc": "UI assets", "children": [
+                    { "name": "Atlas/", "type": "folder", "desc": "Sprite atlases" },
+                    { "name": "Icons/", "type": "folder", "desc": "Icons" },
+                    { "name": "Textures/", "type": "folder", "desc": "Loose textures" },
+                    { "name": "Fonts/", "type": "folder", "desc": "Fonts" }
+                  ]},
+                  { "name": "Materials/", "type": "folder", "desc": "Material library" },
+                  { "name": "Animations/", "type": "folder", "desc": "Animation assets" },
+                  { "name": "Audio/", "type": "folder", "desc": "Audio assets" }
+                ]},
+                { "name": "Prefabs/", "type": "folder", "desc": "Prefabs" },
+                { "name": "Scenes/", "type": "folder", "desc": "Scene files" },
+                { "name": "Scripts/", "type": "folder", "desc": "Scripts" }
+              ]},
+              { "name": "ThirdParty/", "type": "folder", "desc": "Third-party plugins" },
+              { "name": "Resources/", "type": "folder", "desc": "Dynamic load assets" },
+              { "name": "StreamingAssets/", "type": "folder", "desc": "Raw assets" }
+            ]}
+          ]
+        },
+        "unreal": {
+          "name": "Unreal Project Structure",
+          "tree": [
+            { "name": "Content/", "type": "folder", "children": [
+              { "name": "Art/", "type": "folder", "desc": "Art assets", "children": [
+                { "name": "Characters/", "type": "folder", "desc": "Character assets", "children": [
+                  { "name": "Player/", "type": "folder" },
+                  { "name": "NPC/", "type": "folder" },
+                  { "name": "Creatures/", "type": "folder" }
+                ]},
+                { "name": "Environments/", "type": "folder", "desc": "Environment assets", "children": [
+                  { "name": "Props/", "type": "folder" },
+                  { "name": "Architecture/", "type": "folder" },
+                  { "name": "Nature/", "type": "folder" }
+                ]},
+                { "name": "VFX/", "type": "folder", "desc": "Visual effects" },
+                { "name": "UI/", "type": "folder", "desc": "UI assets" },
+                { "name": "Materials/", "type": "folder", "desc": "Material library" }
+              ]},
+              { "name": "Blueprints/", "type": "folder", "desc": "Blueprints" },
+              { "name": "Maps/", "type": "folder", "desc": "Level maps" },
+              { "name": "Audio/", "type": "folder", "desc": "Audio assets" },
+              { "name": "ThirdParty/", "type": "folder", "desc": "Third-party assets" }
+            ]}
+          ]
+        }
+      }
+    },
+    "naming": {
+      "title": "Asset Naming Convention",
+      "description": "Unified naming conventions to help team members quickly identify asset types and purposes.",
+      "format": {
+        "title": "General Naming Format",
+        "pattern": "[Prefix]_[AssetName]_[Variant]_[Suffix]",
+        "example": "T_CH_Player_Body_D.png"
+      },
+      "prefixes": {
+        "title": "Prefix Rules (By Asset Type)",
+        "items": [
+          { "prefix": "CH_", "type": "Character", "desc": "Character", "example": "CH_Player_Warrior" },
+          { "prefix": "EN_", "type": "Environment", "desc": "Environment", "example": "EN_Building_House01" },
+          { "prefix": "PR_", "type": "Props", "desc": "Props", "example": "PR_Weapon_Sword" },
+          { "prefix": "VFX_", "type": "Visual FX", "desc": "Visual Effects", "example": "VFX_Fire_Explosion" },
+          { "prefix": "UI_", "type": "User Interface", "desc": "UI Element", "example": "UI_Icon_Skill_Fireball" },
+          { "prefix": "MAT_", "type": "Material", "desc": "Material", "example": "MAT_Metal_Gold" },
+          { "prefix": "T_", "type": "Texture", "desc": "Texture", "example": "T_Player_D" },
+          { "prefix": "SK_", "type": "Skeletal Mesh", "desc": "Skeletal Mesh", "example": "SK_Player_Body" },
+          { "prefix": "SM_", "type": "Static Mesh", "desc": "Static Mesh", "example": "SM_Rock_Large" },
+          { "prefix": "A_", "type": "Animation", "desc": "Animation", "example": "A_Player_Run" },
+          { "prefix": "ABP_", "type": "Anim Blueprint", "desc": "Animation Blueprint", "example": "ABP_Player" },
+          { "prefix": "SFX_", "type": "Sound FX", "desc": "Sound Effect", "example": "SFX_Explosion_01" }
+        ]
+      },
+      "textureSuffixes": {
+        "title": "Texture Suffix Rules",
+        "items": [
+          { "suffix": "_D", "type": "Diffuse/Albedo", "desc": "Diffuse/Base Color" },
+          { "suffix": "_N", "type": "Normal", "desc": "Normal Map" },
+          { "suffix": "_M", "type": "Metallic", "desc": "Metallic" },
+          { "suffix": "_R", "type": "Roughness", "desc": "Roughness" },
+          { "suffix": "_AO", "type": "Ambient Occlusion", "desc": "Ambient Occlusion" },
+          { "suffix": "_E", "type": "Emissive", "desc": "Emissive" },
+          { "suffix": "_H", "type": "Height", "desc": "Height Map" },
+          { "suffix": "_MRA", "type": "Packed (M+R+AO)", "desc": "Packed Channel Texture" },
+          { "suffix": "_Mask", "type": "Mask", "desc": "Mask Texture" },
+          { "suffix": "_O", "type": "Opacity", "desc": "Opacity" }
+        ]
+      },
+      "examples": {
+        "title": "Naming Examples",
+        "correct": [
+          "T_CH_Player_Body_D.png — Character body diffuse texture",
+          "T_EN_Rock_Large_N.tga — Environment rock normal map",
+          "SM_PR_Chest_Wood_01.fbx — Wooden chest model",
+          "A_CH_Player_Idle_01.fbx — Player idle animation",
+          "MAT_Skin_Human.mat — Human skin material",
+          "VFX_Skill_FireBall.prefab — Fireball skill effect"
+        ],
+        "incorrect": [
+          "player_texture.png — Missing type prefix and texture suffix",
+          "新建贴图1.psd — Non-ASCII characters, wrong format",
+          "FinalVersion_v2_new.fbx — Meaningless version numbering",
+          "test.fbx — Non-descriptive naming",
+          "Texture (1).png — Auto-generated naming"
+        ]
+      }
+    },
+    "checklist": {
+      "title": "Delivery Checklist",
+      "description": "Required checks before asset submission to ensure quality meets specification requirements.",
+      "categories": {
+        "model": {
+          "title": "Model Checklist",
+          "items": [
+            { "item": "Polygon count meets requirements", "required": true },
+            { "item": "No overlapping faces, isolated vertices, N-gons", "required": true },
+            { "item": "Normals facing outward", "required": true },
+            { "item": "UV has no stretching/overlap (except Lightmap UV)", "required": true },
+            { "item": "Pivot point positioned correctly (bottom center)", "required": true },
+            { "item": "Model orientation correct (+Y or +Z forward)", "required": true },
+            { "item": "Transforms applied (Scale = 1)", "required": true },
+            { "item": "Material count within limits", "required": true },
+            { "item": "LOD levels configured", "required": false },
+            { "item": "Collision volumes set correctly", "required": false }
+          ]
+        },
+        "texture": {
+          "title": "Texture Checklist",
+          "items": [
+            { "item": "Resolution is Power of Two (POT)", "required": true },
+            { "item": "Naming follows convention (prefix + suffix)", "required": true },
+            { "item": "Format correct (TGA/PNG)", "required": true },
+            { "item": "No visible seams or artifacts", "required": true },
+            { "item": "Alpha channel correct (if applicable)", "required": true },
+            { "item": "Color space correct (sRGB/Linear)", "required": true },
+            { "item": "Mipmap settings correct", "required": true },
+            { "item": "Texture compression optimized", "required": false }
+          ]
+        },
+        "animation": {
+          "title": "Animation Checklist",
+          "items": [
+            { "item": "Frame rate correct (30fps)", "required": true },
+            { "item": "No clipping or jittering", "required": true },
+            { "item": "Start/End frames correct", "required": true },
+            { "item": "Loop animations seamless", "required": true },
+            { "item": "Root motion correct", "required": true },
+            { "item": "Animation naming follows convention", "required": true },
+            { "item": "Keyframes optimized", "required": false },
+            { "item": "No redundant bone animation data", "required": false }
+          ]
+        },
+        "vfx": {
+          "title": "VFX Checklist",
+          "items": [
+            { "item": "Particle count within limits", "required": true },
+            { "item": "Texture size meets specification", "required": true },
+            { "item": "Shader complexity within limits", "required": true },
+            { "item": "No overdraw issues", "required": true },
+            { "item": "Effect duration appropriate", "required": true },
+            { "item": "Loop effects have no flicker", "required": true },
+            { "item": "Performance tested on target device", "required": false }
+          ]
+        },
+        "general": {
+          "title": "General Checklist",
+          "items": [
+            { "item": "Asset naming follows convention", "required": true },
+            { "item": "Asset placed in correct directory", "required": true },
+            { "item": "No redundant/temporary files", "required": true },
+            { "item": "Dependencies complete", "required": true },
+            { "item": "Previewed in editor", "required": true },
+            { "item": "Asset documentation completed", "required": false }
+          ]
+        }
       }
     },
     "emptyState": "Select asset types from the filter panel to view specifications."

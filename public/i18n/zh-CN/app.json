@@ -222,8 +222,13 @@
   },
   "artSpec": {
     "title": "美术规范",
-    "subtitle": "资产制作标准",
-    "description": "针对不同游戏品类和目标平台的美术资产制作技术规范。",
+    "subtitle": "资产制作标准与工程规范",
+    "description": "针对不同游戏品类和目标平台的美术资产制作技术规范，包含目录结构、命名规则、资产标准及交付检查清单。",
+    "tabs": {
+      "asset": "资产规范",
+      "project": "工程规范",
+      "checklist": "交付检查"
+    },
     "filterGroups": {
       "category": {
         "title": "游戏品类",
@@ -249,7 +254,9 @@
           { "id": "texture", "label": "贴图" },
           { "id": "model", "label": "模型" },
           { "id": "animation", "label": "动画" },
-          { "id": "vfx", "label": "特效" }
+          { "id": "vfx", "label": "特效" },
+          { "id": "material", "label": "材质" },
+          { "id": "ui", "label": "UI资源" }
         ]
       }
     },
@@ -263,16 +270,28 @@
               { "label": "PC端英雄角色", "value": "2048 x 2048" },
               { "label": "PC端NPC", "value": "1024 x 1024" },
               { "label": "移动端角色", "value": "1024 x 1024" },
-              { "label": "移动端道具", "value": "512 x 512" }
+              { "label": "移动端道具", "value": "512 x 512" },
+              { "label": "场景大件", "value": "2048 x 2048" },
+              { "label": "场景小件", "value": "256 x 256 ~ 512 x 512" }
             ]
           },
           {
             "subtitle": "格式要求",
             "items": [
-              { "label": "漫反射贴图", "value": "PNG / TGA" },
-              { "label": "法线贴图", "value": "TGA (DirectX)" },
-              { "label": "金属度/粗糙度", "value": "PNG (合并)" },
-              { "label": "自发光贴图", "value": "PNG (RGB)" }
+              { "label": "漫反射贴图 (Albedo)", "value": "PNG / TGA (sRGB)" },
+              { "label": "法线贴图 (Normal)", "value": "TGA (DirectX格式, Linear)" },
+              { "label": "金属度/粗糙度 (MRA)", "value": "PNG (R:金属 G:粗糙 B:AO)" },
+              { "label": "自发光贴图 (Emissive)", "value": "PNG (RGB, sRGB)" },
+              { "label": "遮罩贴图 (Mask)", "value": "PNG (单通道或多通道)" }
+            ]
+          },
+          {
+            "subtitle": "技术要求",
+            "items": [
+              { "label": "Mipmap", "value": "必须开启 (UI贴图除外)" },
+              { "label": "分辨率", "value": "必须为2的幂次 (POT)" },
+              { "label": "压缩格式 (PC)", "value": "BC7 / BC5 (法线)" },
+              { "label": "压缩格式 (移动)", "value": "ASTC 4x4 / ETC2" }
             ]
           }
         ]
@@ -286,16 +305,37 @@
               { "label": "PC端英雄（高配）", "value": "30,000 - 50,000 三角面" },
               { "label": "PC端英雄（中配）", "value": "15,000 - 25,000 三角面" },
               { "label": "移动端英雄", "value": "8,000 - 15,000 三角面" },
-              { "label": "移动端NPC", "value": "3,000 - 6,000 三角面" }
+              { "label": "移动端NPC", "value": "3,000 - 6,000 三角面" },
+              { "label": "场景建筑 (大)", "value": "5,000 - 20,000 三角面" },
+              { "label": "场景道具 (小)", "value": "100 - 1,000 三角面" }
             ]
           },
           {
             "subtitle": "骨骼标准",
             "items": [
-              { "label": "人形骨骼", "value": "60 - 80 根骨骼" },
+              { "label": "人形骨骼 (PC)", "value": "60 - 80 根骨骼" },
+              { "label": "人形骨骼 (移动)", "value": "40 - 60 根骨骼" },
               { "label": "面部骨骼", "value": "30 - 50 根骨骼" },
-              { "label": "移动端优化", "value": "40 - 60 根骨骼" },
-              { "label": "生物绑定", "value": "40 - 100 根骨骼" }
+              { "label": "生物/怪物", "value": "40 - 100 根骨骼" },
+              { "label": "每顶点骨骼影响数", "value": "PC: 4 / 移动: 2" }
+            ]
+          },
+          {
+            "subtitle": "UV与材质",
+            "items": [
+              { "label": "UV1 (主贴图)", "value": "不可重叠, 边距≥2像素" },
+              { "label": "UV2 (Lightmap)", "value": "不可重叠, 0-1空间内" },
+              { "label": "材质球数量 (角色)", "value": "1-3 个" },
+              { "label": "材质球数量 (场景)", "value": "1-2 个" }
+            ]
+          },
+          {
+            "subtitle": "导出设置",
+            "items": [
+              { "label": "文件格式", "value": "FBX 2020" },
+              { "label": "缩放", "value": "1单位 = 1厘米" },
+              { "label": "坐标系", "value": "Y轴向上, -Z向前" },
+              { "label": "枢轴点", "value": "模型底部中心" }
             ]
           }
         ]
@@ -306,19 +346,30 @@
           {
             "subtitle": "帧率标准",
             "items": [
-              { "label": "PC端游戏动画", "value": "30 FPS" },
-              { "label": "PC端过场动画", "value": "60 FPS" },
-              { "label": "移动端游戏动画", "value": "30 FPS" },
-              { "label": "UI动画", "value": "60 FPS" }
+              { "label": "游戏动画 (通用)", "value": "30 FPS" },
+              { "label": "过场动画 (CG)", "value": "30 / 60 FPS" },
+              { "label": "UI动画", "value": "60 FPS" },
+              { "label": "面部动画", "value": "30 FPS" }
             ]
           },
           {
             "subtitle": "时长规范",
             "items": [
-              { "label": "待机循环", "value": "2 - 4 秒" },
-              { "label": "攻击连招", "value": "0.5 - 1.5 秒" },
-              { "label": "终极技能", "value": "2 - 5 秒" },
+              { "label": "待机循环 (Idle)", "value": "2 - 4 秒" },
+              { "label": "行走循环 (Walk)", "value": "0.8 - 1.2 秒" },
+              { "label": "奔跑循环 (Run)", "value": "0.6 - 0.8 秒" },
+              { "label": "攻击动作", "value": "0.5 - 1.5 秒" },
+              { "label": "技能释放", "value": "1 - 3 秒" },
               { "label": "死亡动画", "value": "1 - 2 秒" }
+            ]
+          },
+          {
+            "subtitle": "骨骼动画规范",
+            "items": [
+              { "label": "根骨骼运动", "value": "需提取为 Root Motion" },
+              { "label": "循环动画", "value": "首尾帧必须一致" },
+              { "label": "关键帧密度", "value": "每2-5帧一个关键帧" },
+              { "label": "动画曲线", "value": "使用平滑插值" }
             ]
           }
         ]
@@ -331,20 +382,307 @@
             "items": [
               { "label": "PC端最大粒子数", "value": "5,000 个/效果" },
               { "label": "移动端最大粒子数", "value": "1,000 个/效果" },
-              { "label": "屏幕覆盖率", "value": "< 30% 最大" },
-              { "label": "过度绘制预算", "value": "< 4倍" }
+              { "label": "同屏特效数量", "value": "PC: 50 / 移动: 20" },
+              { "label": "屏幕覆盖率", "value": "< 30%" },
+              { "label": "过度绘制 (Overdraw)", "value": "< 4倍" }
             ]
           },
           {
             "subtitle": "贴图标准",
             "items": [
-              { "label": "序列帧尺寸", "value": "512 x 512 (4x4)" },
-              { "label": "噪声贴图", "value": "256 x 256" },
-              { "label": "渐变贴图", "value": "256 x 16" },
-              { "label": "格式", "value": "PNG（带Alpha）" }
+              { "label": "序列帧尺寸", "value": "512 x 512 (4x4 = 16帧)" },
+              { "label": "序列帧尺寸 (大型)", "value": "1024 x 1024 (8x8 = 64帧)" },
+              { "label": "噪声/扰动贴图", "value": "256 x 256 (可Tile)" },
+              { "label": "渐变贴图 (Ramp)", "value": "256 x 16" },
+              { "label": "格式", "value": "PNG (带Alpha通道)" }
+            ]
+          },
+          {
+            "subtitle": "Shader规范",
+            "items": [
+              { "label": "指令数 (移动)", "value": "< 50 ALU" },
+              { "label": "指令数 (PC)", "value": "< 100 ALU" },
+              { "label": "贴图采样数", "value": "< 4张" },
+              { "label": "透明模式", "value": "优先使用 Additive" }
             ]
           }
         ]
+      },
+      "material": {
+        "title": "材质规范",
+        "sections": [
+          {
+            "subtitle": "材质球管理",
+            "items": [
+              { "label": "材质实例化", "value": "相同材质使用 Material Instance" },
+              { "label": "材质球数量 (角色)", "value": "1-3 个/角色" },
+              { "label": "材质球数量 (场景物件)", "value": "1 个/物件" },
+              { "label": "共享材质", "value": "同类资产使用共享材质" }
+            ]
+          },
+          {
+            "subtitle": "Shader复杂度",
+            "items": [
+              { "label": "指令数 (移动端)", "value": "< 100 ALU" },
+              { "label": "指令数 (PC端)", "value": "< 200 ALU" },
+              { "label": "贴图采样数 (移动)", "value": "≤ 4张" },
+              { "label": "贴图采样数 (PC)", "value": "≤ 8张" }
+            ]
+          },
+          {
+            "subtitle": "透明度使用",
+            "items": [
+              { "label": "Alpha Blend", "value": "尽量避免大面积使用" },
+              { "label": "Alpha Test", "value": "优先使用 (树叶、毛发)" },
+              { "label": "透明排序", "value": "设置正确的 Render Queue" },
+              { "label": "双面渲染", "value": "仅在必要时开启" }
+            ]
+          }
+        ]
+      },
+      "ui": {
+        "title": "UI资源规范",
+        "sections": [
+          {
+            "subtitle": "设计基准",
+            "items": [
+              { "label": "设计分辨率", "value": "1920 x 1080 (16:9)" },
+              { "label": "高清适配", "value": "2560 x 1440 / 4K" },
+              { "label": "移动端基准", "value": "1334 x 750 (iPhone 8)" },
+              { "label": "安全区域", "value": "距边缘 ≥ 5%" }
+            ]
+          },
+          {
+            "subtitle": "图标规范",
+            "items": [
+              { "label": "技能图标", "value": "128 x 128 / 256 x 256" },
+              { "label": "物品图标", "value": "64 x 64 / 128 x 128" },
+              { "label": "系统图标", "value": "32 x 32 / 64 x 64" },
+              { "label": "图标格式", "value": "PNG-24 (带Alpha)" }
+            ]
+          },
+          {
+            "subtitle": "图集规范",
+            "items": [
+              { "label": "图集最大尺寸", "value": "2048 x 2048" },
+              { "label": "图集间距", "value": "≥ 2像素" },
+              { "label": "九宫格切图", "value": "注明切割参数" },
+              { "label": "导出格式", "value": "PNG-24 / WebP" }
+            ]
+          },
+          {
+            "subtitle": "命名规则",
+            "items": [
+              { "label": "按钮", "value": "UI_Btn_[功能]_[状态]" },
+              { "label": "图标", "value": "UI_Icon_[类别]_[名称]" },
+              { "label": "背景", "value": "UI_Bg_[模块]_[描述]" },
+              { "label": "通用", "value": "UI_[类型]_[模块]_[功能]" }
+            ]
+          }
+        ]
+      }
+    },
+    "projectStructure": {
+      "title": "工程目录结构",
+      "description": "统一的美术资源目录组织规范，确保团队协作效率和资产管理便捷性。",
+      "engines": {
+        "unity": {
+          "name": "Unity 工程结构",
+          "tree": [
+            { "name": "Assets/", "type": "folder", "children": [
+              { "name": "_Project/", "type": "folder", "desc": "项目专属资源", "children": [
+                { "name": "Art/", "type": "folder", "desc": "美术资源根目录", "children": [
+                  { "name": "Characters/", "type": "folder", "desc": "角色资源", "children": [
+                    { "name": "Player/", "type": "folder", "desc": "玩家角色" },
+                    { "name": "NPC/", "type": "folder", "desc": "NPC角色" },
+                    { "name": "Monsters/", "type": "folder", "desc": "怪物" }
+                  ]},
+                  { "name": "Environments/", "type": "folder", "desc": "场景资源", "children": [
+                    { "name": "Props/", "type": "folder", "desc": "道具物件" },
+                    { "name": "Buildings/", "type": "folder", "desc": "建筑" },
+                    { "name": "Terrain/", "type": "folder", "desc": "地形" },
+                    { "name": "Vegetation/", "type": "folder", "desc": "植被" }
+                  ]},
+                  { "name": "VFX/", "type": "folder", "desc": "特效资源", "children": [
+                    { "name": "Particles/", "type": "folder", "desc": "粒子特效" },
+                    { "name": "Textures/", "type": "folder", "desc": "特效贴图" },
+                    { "name": "Shaders/", "type": "folder", "desc": "特效Shader" }
+                  ]},
+                  { "name": "UI/", "type": "folder", "desc": "界面资源", "children": [
+                    { "name": "Atlas/", "type": "folder", "desc": "图集" },
+                    { "name": "Icons/", "type": "folder", "desc": "图标" },
+                    { "name": "Textures/", "type": "folder", "desc": "散图" },
+                    { "name": "Fonts/", "type": "folder", "desc": "字体" }
+                  ]},
+                  { "name": "Materials/", "type": "folder", "desc": "材质库" },
+                  { "name": "Animations/", "type": "folder", "desc": "动画资源" },
+                  { "name": "Audio/", "type": "folder", "desc": "音频资源" }
+                ]},
+                { "name": "Prefabs/", "type": "folder", "desc": "预制体" },
+                { "name": "Scenes/", "type": "folder", "desc": "场景文件" },
+                { "name": "Scripts/", "type": "folder", "desc": "脚本代码" }
+              ]},
+              { "name": "ThirdParty/", "type": "folder", "desc": "第三方插件" },
+              { "name": "Resources/", "type": "folder", "desc": "动态加载资源" },
+              { "name": "StreamingAssets/", "type": "folder", "desc": "原始资源" }
+            ]}
+          ]
+        },
+        "unreal": {
+          "name": "Unreal 工程结构",
+          "tree": [
+            { "name": "Content/", "type": "folder", "children": [
+              { "name": "Art/", "type": "folder", "desc": "美术资源", "children": [
+                { "name": "Characters/", "type": "folder", "desc": "角色资源", "children": [
+                  { "name": "Player/", "type": "folder" },
+                  { "name": "NPC/", "type": "folder" },
+                  { "name": "Creatures/", "type": "folder" }
+                ]},
+                { "name": "Environments/", "type": "folder", "desc": "场景资源", "children": [
+                  { "name": "Props/", "type": "folder" },
+                  { "name": "Architecture/", "type": "folder" },
+                  { "name": "Nature/", "type": "folder" }
+                ]},
+                { "name": "VFX/", "type": "folder", "desc": "特效资源" },
+                { "name": "UI/", "type": "folder", "desc": "界面资源" },
+                { "name": "Materials/", "type": "folder", "desc": "材质库" }
+              ]},
+              { "name": "Blueprints/", "type": "folder", "desc": "蓝图" },
+              { "name": "Maps/", "type": "folder", "desc": "关卡地图" },
+              { "name": "Audio/", "type": "folder", "desc": "音频资源" },
+              { "name": "ThirdParty/", "type": "folder", "desc": "第三方资源" }
+            ]}
+          ]
+        }
+      }
+    },
+    "naming": {
+      "title": "资产命名规范",
+      "description": "统一的资产命名约定，确保团队成员能快速识别资产类型和用途。",
+      "format": {
+        "title": "通用命名格式",
+        "pattern": "[前缀]_[资产名称]_[变体]_[后缀]",
+        "example": "T_CH_Player_Body_D.png"
+      },
+      "prefixes": {
+        "title": "前缀规则（按资产类型）",
+        "items": [
+          { "prefix": "CH_", "type": "Character", "desc": "角色", "example": "CH_Player_Warrior" },
+          { "prefix": "EN_", "type": "Environment", "desc": "场景", "example": "EN_Building_House01" },
+          { "prefix": "PR_", "type": "Props", "desc": "道具", "example": "PR_Weapon_Sword" },
+          { "prefix": "VFX_", "type": "Visual FX", "desc": "特效", "example": "VFX_Fire_Explosion" },
+          { "prefix": "UI_", "type": "User Interface", "desc": "界面", "example": "UI_Icon_Skill_Fireball" },
+          { "prefix": "MAT_", "type": "Material", "desc": "材质", "example": "MAT_Metal_Gold" },
+          { "prefix": "T_", "type": "Texture", "desc": "贴图", "example": "T_Player_D" },
+          { "prefix": "SK_", "type": "Skeletal Mesh", "desc": "骨骼网格体", "example": "SK_Player_Body" },
+          { "prefix": "SM_", "type": "Static Mesh", "desc": "静态网格体", "example": "SM_Rock_Large" },
+          { "prefix": "A_", "type": "Animation", "desc": "动画", "example": "A_Player_Run" },
+          { "prefix": "ABP_", "type": "Anim Blueprint", "desc": "动画蓝图", "example": "ABP_Player" },
+          { "prefix": "SFX_", "type": "Sound FX", "desc": "音效", "example": "SFX_Explosion_01" }
+        ]
+      },
+      "textureSuffixes": {
+        "title": "贴图后缀规则",
+        "items": [
+          { "suffix": "_D", "type": "Diffuse/Albedo", "desc": "漫反射/基础色" },
+          { "suffix": "_N", "type": "Normal", "desc": "法线贴图" },
+          { "suffix": "_M", "type": "Metallic", "desc": "金属度" },
+          { "suffix": "_R", "type": "Roughness", "desc": "粗糙度" },
+          { "suffix": "_AO", "type": "Ambient Occlusion", "desc": "环境光遮蔽" },
+          { "suffix": "_E", "type": "Emissive", "desc": "自发光" },
+          { "suffix": "_H", "type": "Height", "desc": "高度图" },
+          { "suffix": "_MRA", "type": "Packed (M+R+AO)", "desc": "合并通道贴图" },
+          { "suffix": "_Mask", "type": "Mask", "desc": "遮罩贴图" },
+          { "suffix": "_O", "type": "Opacity", "desc": "透明度" }
+        ]
+      },
+      "examples": {
+        "title": "命名示例",
+        "correct": [
+          "T_CH_Player_Body_D.png — 角色身体漫反射贴图",
+          "T_EN_Rock_Large_N.tga — 场景岩石法线贴图",
+          "SM_PR_Chest_Wood_01.fbx — 木质宝箱模型",
+          "A_CH_Player_Idle_01.fbx — 玩家待机动画",
+          "MAT_Skin_Human.mat — 人类皮肤材质",
+          "VFX_Skill_FireBall.prefab — 火球技能特效"
+        ],
+        "incorrect": [
+          "player_texture.png — 缺少类型前缀和贴图后缀",
+          "新建贴图1.psd — 中文命名，错误格式",
+          "FinalVersion_v2_new.fbx — 无意义版本号",
+          "test.fbx — 无描述性命名",
+          "Texture (1).png — 自动生成命名"
+        ]
+      }
+    },
+    "checklist": {
+      "title": "交付检查清单",
+      "description": "资产提交前必须完成的检查项目，确保资产质量符合规范要求。",
+      "categories": {
+        "model": {
+          "title": "模型检查项",
+          "items": [
+            { "item": "面数符合规格要求", "required": true },
+            { "item": "无重叠面、孤立顶点、N-gon", "required": true },
+            { "item": "法线方向正确（朝外）", "required": true },
+            { "item": "UV无拉伸、重叠（Lightmap UV除外）", "required": true },
+            { "item": "枢轴点位置正确（底部中心）", "required": true },
+            { "item": "模型朝向正确（+Y或+Z向前）", "required": true },
+            { "item": "变换已应用（Scale = 1）", "required": true },
+            { "item": "材质球数量符合规范", "required": true },
+            { "item": "LOD层级设置完成", "required": false },
+            { "item": "碰撞体积设置正确", "required": false }
+          ]
+        },
+        "texture": {
+          "title": "贴图检查项",
+          "items": [
+            { "item": "分辨率为2的幂次（POT）", "required": true },
+            { "item": "命名符合规范（前缀+后缀）", "required": true },
+            { "item": "格式正确（TGA/PNG）", "required": true },
+            { "item": "无明显接缝、瑕疵", "required": true },
+            { "item": "Alpha通道正确（如有）", "required": true },
+            { "item": "色彩空间正确（sRGB/Linear）", "required": true },
+            { "item": "Mipmap设置正确", "required": true },
+            { "item": "贴图已优化压缩", "required": false }
+          ]
+        },
+        "animation": {
+          "title": "动画检查项",
+          "items": [
+            { "item": "帧率正确（30fps）", "required": true },
+            { "item": "无穿模、抖动问题", "required": true },
+            { "item": "起始/结束帧正确", "required": true },
+            { "item": "循环动画首尾帧一致", "required": true },
+            { "item": "根骨骼运动正确", "required": true },
+            { "item": "动画命名符合规范", "required": true },
+            { "item": "关键帧已优化", "required": false },
+            { "item": "无冗余骨骼动画数据", "required": false }
+          ]
+        },
+        "vfx": {
+          "title": "特效检查项",
+          "items": [
+            { "item": "粒子数量符合限制", "required": true },
+            { "item": "贴图尺寸符合规范", "required": true },
+            { "item": "Shader复杂度符合要求", "required": true },
+            { "item": "无过度绘制问题", "required": true },
+            { "item": "特效时长合理", "required": true },
+            { "item": "循环特效无闪烁", "required": true },
+            { "item": "已在目标设备测试性能", "required": false }
+          ]
+        },
+        "general": {
+          "title": "通用检查项",
+          "items": [
+            { "item": "资产命名符合规范", "required": true },
+            { "item": "资产放置在正确目录", "required": true },
+            { "item": "无冗余/临时文件", "required": true },
+            { "item": "依赖资产完整", "required": true },
+            { "item": "已在编辑器中预览检查", "required": true },
+            { "item": "已填写资产说明文档", "required": false }
+          ]
+        }
       }
     },
     "emptyState": "请从筛选面板选择资产类型以查看规范。"
