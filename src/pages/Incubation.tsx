@@ -1,5 +1,5 @@
 import { useState, useRef } from 'react'
-import Navigation from '../components/Navigation'
+import MainLayout from '../components/MainLayout'
 import { ToastContainer, useToast } from '../components/Toast'
 import { useI18n } from '../hooks/useI18n'
 import { 
@@ -106,7 +106,7 @@ function ProposalCard({ proposal, labels, iconIndex, isNew = false }: ProposalCa
   const Icon = proposalIcons[iconIndex % proposalIcons.length]
 
   return (
-    <div className={`bg-[var(--bg-surface)] border rounded overflow-hidden transition-all duration-300 ${isNew ? 'border-[var(--primary-border)] animate-scale-in' : 'border-[var(--border-default)]'} hover:border-[var(--border-emphasis)]`}>
+    <div className={`bg-gray-800/30 backdrop-blur-sm border rounded-xl overflow-hidden transition-all duration-300 ${isNew ? 'border-blue-500/50 animate-scale-in' : 'border-gray-700/50'} hover:border-blue-500/30`}>
       {/* Clickable Header */}
       <div onClick={() => setIsExpanded(!isExpanded)} className="p-4 cursor-pointer">
         <div className="flex items-start gap-3">
@@ -320,12 +320,8 @@ function Incubation() {
   }
 
   return (
-    <div className="min-h-screen bg-[var(--bg-base)]">
-      <Navigation />
+    <MainLayout>
       <ToastContainer toasts={toasts} onRemove={removeToast} />
-      
-      <main className="pt-16">
-        <div className="mx-auto px-6 py-8" style={{ maxWidth: '2000px' }}>
           {/* Page Header */}
           <header className="mb-8">
             <div className="flex items-center gap-4 mb-4">
@@ -350,7 +346,7 @@ function Incubation() {
           <div className="grid grid-cols-1 lg:grid-cols-5 gap-6">
             {/* Left: Submission Form */}
             <section className="lg:col-span-3">
-              <div className="bg-[var(--bg-surface)] border border-[var(--border-default)] rounded p-6">
+              <div className="bg-gray-800/30 backdrop-blur-sm border border-gray-700/50 rounded-xl p-6">
                 <div className="flex items-center gap-3 mb-6">
                   <FileText className="w-5 h-5 text-[var(--primary-text)]" />
                   <h2 className="text-lg font-semibold text-[var(--text-primary)]">
@@ -480,7 +476,7 @@ function Incubation() {
 
             {/* Right: Proposals List */}
             <aside className="lg:col-span-2">
-              <div className="bg-[var(--bg-surface)] border border-[var(--border-default)] rounded p-6">
+              <div className="bg-gray-800/30 backdrop-blur-sm border border-gray-700/50 rounded-xl p-6">
                 <div className="flex items-center gap-3 mb-6">
                   <List className="w-5 h-5 text-[var(--primary-text)]" />
                   <h2 className="text-lg font-semibold text-[var(--text-primary)]">
@@ -520,9 +516,7 @@ function Incubation() {
               </div>
             </aside>
           </div>
-        </div>
-      </main>
-    </div>
+    </MainLayout>
   )
 }
 

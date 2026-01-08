@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import Navigation from '../components/Navigation'
+import MainLayout from '../components/MainLayout'
 import ImagePreviewModal from '../components/ImagePreviewModal'
 import { useI18n } from '../hooks/useI18n'
 import { 
@@ -110,7 +110,7 @@ function EnhancedSpecCard({ specId, title, iconId, sections, images, onImageClic
   const Icon = iconMap[iconId] || FileText
   
   return (
-    <div className="bg-[var(--bg-surface)] border border-[var(--border-default)] rounded p-6">
+    <div className="bg-gray-800/30 backdrop-blur-sm border border-gray-700/50 rounded-xl p-6">
       <div className="flex items-center gap-3 mb-4">
         <div className="w-10 h-10 bg-[var(--primary-subtle)] rounded flex items-center justify-center">
           <Icon className="w-5 h-5 text-[var(--primary-text)]" />
@@ -475,11 +475,7 @@ function ArtSpec() {
   ]
 
   return (
-    <div className="min-h-screen bg-[var(--bg-base)]">
-      <Navigation />
-      
-      <main className="pt-16">
-        <div className="mx-auto px-6 py-8" style={{ maxWidth: '2000px' }}>
+    <MainLayout>
           {/* Page Header */}
           <header className="mb-6">
             <div className="flex items-center gap-4 mb-4">
@@ -527,7 +523,7 @@ function ArtSpec() {
             <div className="flex gap-6">
               {/* Left Sidebar: Filters */}
               <aside className="w-64 flex-shrink-0">
-                <div className="bg-[var(--bg-surface)] border border-[var(--border-default)] rounded p-4 sticky top-24">
+                <div className="bg-gray-800/30 backdrop-blur-sm border border-gray-700/50 rounded-xl p-4 sticky top-24">
                   {filterGroups.map((group) => (
                     <div key={group.id} className="mb-6 last:mb-0">
                       <h3 className="text-sm font-medium text-[var(--text-primary)] mb-2 px-3">
@@ -566,7 +562,7 @@ function ArtSpec() {
                     ))}
                   </div>
                 ) : (
-                  <div className="bg-[var(--bg-surface)] border border-[var(--border-default)] rounded p-12 text-center">
+                          <div className="bg-gray-800/30 backdrop-blur-sm border border-gray-700/50 rounded-xl p-12 text-center">
                     <FileText className="w-12 h-12 text-[var(--text-muted)] mx-auto mb-4" />
                     <p className="text-[var(--text-secondary)]">
                       {artSpec.emptyState}
@@ -581,7 +577,7 @@ function ArtSpec() {
             /* Project Structure Tab */
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
               {/* Directory Structure */}
-              <div className="bg-[var(--bg-surface)] border border-[var(--border-default)] rounded p-6">
+              <div className="bg-gray-800/30 backdrop-blur-sm border border-gray-700/50 rounded-xl p-6">
                 <div className="flex items-center justify-between mb-4">
                   <h3 className="text-lg font-semibold text-[var(--text-primary)]">
                     {artSpec.projectStructure.title}
@@ -630,7 +626,7 @@ function ArtSpec() {
               {artSpec.naming && (
                 <div className="space-y-6">
                   {/* Naming Format */}
-                  <div className="bg-[var(--bg-surface)] border border-[var(--border-default)] rounded p-6">
+                  <div className="bg-gray-800/30 backdrop-blur-sm border border-gray-700/50 rounded-xl p-6">
                     <h3 className="text-lg font-semibold text-[var(--text-primary)] mb-2">
                       {artSpec.naming.title}
                     </h3>
@@ -685,7 +681,7 @@ function ArtSpec() {
                   </div>
 
                   {/* Texture Suffixes */}
-                  <div className="bg-[var(--bg-surface)] border border-[var(--border-default)] rounded p-6">
+                  <div className="bg-gray-800/30 backdrop-blur-sm border border-gray-700/50 rounded-xl p-6">
                     <h4 className="text-sm font-medium text-[var(--text-primary)] mb-3">
                       {artSpec.naming.textureSuffixes.title}
                     </h4>
@@ -700,7 +696,7 @@ function ArtSpec() {
                   </div>
 
                   {/* Examples */}
-                  <div className="bg-[var(--bg-surface)] border border-[var(--border-default)] rounded p-6">
+                  <div className="bg-gray-800/30 backdrop-blur-sm border border-gray-700/50 rounded-xl p-6">
                     <h4 className="text-sm font-medium text-[var(--text-primary)] mb-3">
                       {artSpec.naming.examples.title}
                     </h4>
@@ -760,7 +756,7 @@ function ArtSpec() {
               
               <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
                 {Object.entries(artSpec.checklist.categories).map(([key, category]: [string, { title: string; items: { item: string; required: boolean }[] }]) => (
-                  <div key={key} className="bg-[var(--bg-surface)] border border-[var(--border-default)] rounded p-6">
+                  <div key={key} className="bg-gray-800/30 backdrop-blur-sm border border-gray-700/50 rounded-xl p-6">
                     <div className="flex items-center gap-3 mb-4">
                       <div className="w-10 h-10 bg-[var(--primary-subtle)] rounded flex items-center justify-center">
                         {key === 'model' && <Box className="w-5 h-5 text-[var(--primary-text)]" />}
@@ -788,9 +784,6 @@ function ArtSpec() {
               </div>
             </div>
           )}
-        </div>
-      </main>
-
       {/* Image Preview Modal */}
       <ImagePreviewModal
         isOpen={previewModal.isOpen}
@@ -802,7 +795,7 @@ function ArtSpec() {
         hasPrev={previewModal.imageIndex > 0}
         hasNext={previewModal.imageIndex < currentSpecImages.length - 1}
       />
-    </div>
+    </MainLayout>
   )
 }
 
